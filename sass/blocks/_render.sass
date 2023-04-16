@@ -1,0 +1,285 @@
+.render
+	color: var(--text-color)
+	background: var(--bg-color)
+	padding: 20px 0
+	&__container
+		width: 1140px
+		margin: 0 auto
+		padding-bottom: 20px
+	&__header
+		display: grid
+		grid-template: 50px / 555px 150px 150px 160px 95px
+		text-align: center
+		padding-left: 10px
+		line-height: 50px
+		h2
+			margin: 0
+		&__deadline
+			display: flex
+			justify-content: center
+			align-items: center
+		&__priority
+			display: flex
+			justify-content: center
+			align-items: center
+			position: relative
+			&__dropdown
+				background: var(--bg-color)
+				position: absolute
+				z-index: 5
+				line-height: 25px
+				width: 115px
+				border-radius: 5px
+				border: 1px solid var(--text-color)
+				opacity: 0
+				visibility: hidden
+				left: 135px
+				&__option
+					padding: 5px
+					user-select: none
+					cursor: pointer
+					transition: background .3s
+					&:hover
+						background: $main-color
+					&:not(:last-child)
+						border-bottom: 1px solid var(--text-color)
+		&__status
+			display: flex
+			justify-content: center
+			align-items: center
+			position: relative
+			&__dropdown
+				background: var(--bg-color)
+				position: absolute
+				z-index: 5
+				line-height: 25px
+				width: 115px
+				border-radius: 5px
+				border: 1px solid var(--text-color)
+				opacity: 0
+				visibility: hidden
+				left: 110px
+				&__option
+					padding: 5px
+					user-select: none
+					cursor: pointer
+					transition: background .3s
+					&:hover
+						background: $main-color
+					&:not(:last-child)
+						border-bottom: 1px solid var(--text-color)
+		&__sort
+			margin-left: 5px
+			display: flex
+			flex-direction: column
+			justify-content: center
+			width: 35px
+			&-date-ascending, &-priority-ascending
+				cursor: pointer
+				position: relative
+				&:after
+					content: ""
+					position: absolute
+					top: -15px
+					left: 0
+					border: 13px solid transparent
+					border-top: none
+					border-bottom-color: var(--text-color)
+					transition: all .2s
+				&:hover
+					&:after
+						border-bottom-color: $main-color
+			&-date-descending, &-priority-descending
+				cursor: pointer
+				position: relative
+				&:after
+					content: ""
+					position: absolute
+					top: 5px
+					left: 0
+					border: 13px solid transparent
+					border-bottom: none
+					border-top-color: var(--text-color)
+					transition: all .2s
+				&:hover
+					&:after
+						border-top-color: $main-color
+		&__filter-priority, &__filter-status
+			height: 30px
+			cursor: pointer
+			fill: var(--text-color)
+		&__desc
+			text-align-last: left
+	&__item
+		text-align: center
+		line-height: 50px
+		display: grid
+		padding: 0 15px
+		grid-template: 70px / 555px 150px 150px 160px 95px
+		grid-auto-rows: 70px
+		position: relative
+		line-height: 70px
+		margin-top: 20px
+		border: 2px solid var(--text-color)
+		border-radius: 5px
+		box-shadow: 5px 5px 15px var(--text-color)
+		transition: all .4s
+		&:hover
+			transform: scale(1.05)
+		&__text
+			visibility: hidden
+			opacity: 0
+			position: absolute
+			left: 0
+			padding: 0 10px
+			width: 585px
+			border: none
+		&__date
+			visibility: hidden
+			opacity: 0
+			position: absolute
+			border: none
+			border-left: 1px solid #000
+			border-right: 1px solid #000
+			left: 585px
+		&__desc
+			text-align-last: left
+			visibility: hidden
+			opacity: 0
+			position: absolute
+		&__deadline
+			visibility: hidden
+			opacity: 0
+			position: absolute
+			left: 590px
+		&__status, &__priority
+			cursor: pointer
+			user-select: none
+		&__icons
+			display: flex
+			align-items: center
+			justify-content: space-between
+			padding-left: 10px
+			position: relative
+			&__pencil, &__trash
+				width: 40px
+				fill: var(--text-color)
+				cursor: pointer
+				visibility: hidden
+				opacity: 0
+				border: 2px solid var(--text-color)
+				padding: 5px
+				border-radius: 5px
+				&:hover
+					transform: translateX(2px) translateY(-2px)
+					box-shadow: -1px 1px 1px #000000, -2px 2px 1px #000000
+			&__confirm-edit, &__cancel-edit, &__confirm-delete, &__cancel-delete
+				width: 40px
+				cursor: pointer
+			&__confirm-edit, &__confirm-delete
+				border: 2px solid $main-color
+				padding: 5px
+				border-radius: 5px
+				&:hover
+					transform: translateX(2px) translateY(-2px)
+					box-shadow: -1px 1px 1px #006400, -2px 2px 1px #006400
+			&__cancel-edit, &__cancel-delete
+				border: 2px solid red
+				padding: 5px
+				border-radius: 5px
+				&:hover
+					transform: translateX(2px) translateY(-2px)
+					box-shadow: -1px 1px 1px #ab0000, -2px 2px 1px #ab0000
+			&__yn-edit, &__yn-delete
+				display: flex
+				justify-content: space-between
+				position: absolute
+				top: 15px
+				left: 0
+				width: 95px
+				padding: 0 0 0 10px
+				visibility: hidden
+				opacity: 0
+
+.todo
+	position: relative
+	&::after
+		content: ""
+		position: absolute
+		border-radius: 100%
+		width: 18px
+		height: 18px
+		background: linear-gradient(90deg, #a600ff 0%, #fc00ff 100%)
+		top: calc( 50% - 9px )
+		left: 10px
+		border: 2px solid #a600ff
+
+.inProgress
+	position: relative
+	&::after
+		content: ""
+		position: absolute
+		border-radius: 100%
+		width: 18px
+		height: 18px
+		background: linear-gradient(90deg, #2cff00 0%, #00ddff 100%)
+		top: calc( 50% - 9px )
+		left: 10px
+		border: 2px solid #2cff00
+
+.done
+	position: relative
+	&::after
+		content: ""
+		position: absolute
+		border-radius: 100%
+		width: 18px
+		height: 18px
+		background: linear-gradient(90deg, #001fff 0%, #008eff 100%)
+		top: calc( 50% - 9px )
+		left: 10px
+		border: solid 2px #001fff
+
+.low
+	position: relative
+	&::after
+		content: ""
+		position: absolute
+		border-radius: 100%
+		width: 18px
+		height: 18px
+		background: linear-gradient(90deg, #ffc900 0%, #feff00 100%)
+		top: calc( 50% - 9px )
+		left: 10px
+		border: 2px solid #ffc900
+
+.normal
+	position: relative
+	&::after
+		content: ""
+		position: absolute
+		border-radius: 100%
+		width: 18px
+		height: 18px
+		background: linear-gradient(90deg, #ff7300 0%, #ffc900 100%)
+		top: calc( 50% - 9px )
+		left: 10px
+		border: 2px solid #ff7300
+
+.high
+	position: relative
+	&::after
+		content: ""
+		position: absolute
+		border-radius: 100%
+		width: 18px
+		height: 18px
+		background: linear-gradient(90deg, #ff0000 0%, #ff7300 100%)
+		top: calc( 50% - 9px )
+		left: 10px
+		border: 2px solid #ff0000
+
+.active
+	visibility: visible
+	opacity: 1
+	transition: opacity .4s

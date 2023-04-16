@@ -1,0 +1,129 @@
+.tutorial
+    color: var(--text-color)
+    &__message
+        position: absolute
+        visibility: hidden
+        opacity: 0
+        background: $main-color
+        padding: 20px
+        border-radius: 5px
+        &__one
+            top: 60px
+            left: 450px
+            &::after
+                content: ""
+                position: absolute
+                top: 100%
+                left: 25%
+                border: 25px solid transparent
+                border-bottom: none
+                border-top-color: $main-color
+            &::before
+                content: ""
+                position: absolute
+                top: 100%
+                left: 80%
+                border: 25px solid transparent
+                border-bottom: none
+                border-top-color: $main-color
+        &__two
+            top: 190px
+            left: 655px
+            &::after
+                content: ""
+                position: absolute
+                top: 100%
+                left: 49%
+                border: 25px solid transparent
+                border-bottom: none
+                border-top-color: $main-color
+            &::before
+                content: ""
+                position: absolute
+                top: 100%
+                left: 73%
+                border: 25px solid transparent
+                border-bottom: none
+                border-top-color: $main-color
+        &__three
+            top: 425px
+            left: 530px
+            &::after
+                content: ""
+                position: absolute
+                top: calc( 50% - 23px )
+                left: 100%
+                border: 25px solid transparent
+                border-right: none
+                border-left-color: $main-color
+        &__four
+            top: 375px
+            left: 653px
+            &::after
+                content: ""
+                position: absolute
+                bottom: 100%
+                left: 25%
+                border: 25px solid transparent
+                border-top: none
+                border-bottom-color: $main-color
+            &::before
+                content: ""
+                position: absolute
+                bottom: 100%
+                left: 59%
+                border: 25px solid transparent
+                border-top: none
+                border-bottom-color: $main-color
+        &__five
+            top: 375px
+            left: 885px
+            &::after
+                content: ""
+                position: absolute
+                bottom: 100%
+                left: 23%
+                border: 25px solid transparent
+                border-top: none
+                border-bottom-color: $main-color
+            &::before
+                content: ""
+                position: absolute
+                bottom: 100%
+                left: 59%
+                border: 25px solid transparent
+                border-top: none
+                border-bottom-color: $main-color
+        &__six
+            top: 85px
+            left: 1043px
+            &::after
+                content: ""
+                position: absolute
+                bottom: 100%
+                left: 80%
+                border: 25px solid transparent
+                border-top: none
+                border-bottom-color: $main-color
+    &__text
+        font-size: 18px
+    &__nav
+        display: flex
+        justify-content: space-between
+    &__button
+        background: #008c00
+        width: 50px
+        text-align: center
+        padding: 5px
+        margin-top: 20px
+        border-radius: 5px
+        cursor: pointer
+        user-select: none
+
+.active
+    visibility: visible
+    opacity: 1
+    transition: opacity .4s
+
+#float
+    float: right
