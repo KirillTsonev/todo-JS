@@ -1,7 +1,8 @@
 .render
 	color: var(--text-color)
 	background: var(--bg-color)
-	padding: 20px 0
+	padding: 10px 0
+	position: relative
 	&__container
 		width: 1140px
 		margin: 0 auto
@@ -123,16 +124,13 @@
 		border: 2px solid var(--text-color)
 		border-radius: 5px
 		box-shadow: 5px 5px 15px var(--text-color)
-		transition: all .4s
-		&:hover
-			transform: scale(1.05)
 		&__text
 			visibility: hidden
 			opacity: 0
 			position: absolute
 			left: 0
 			padding: 0 10px
-			width: 585px
+			width: 570px
 			border: none
 		&__date
 			visibility: hidden
@@ -141,7 +139,7 @@
 			border: none
 			border-left: 1px solid #000
 			border-right: 1px solid #000
-			left: 585px
+			left: 570px
 			height: 70px
 		&__desc
 			text-align-last: left
@@ -153,9 +151,65 @@
 			opacity: 0
 			position: absolute
 			left: 590px
-		&__status, &__priority
+			width: 90px
+		&__status
 			cursor: pointer
 			user-select: none
+			position: relative
+			&__dropdown
+				background: var(--bg-color)
+				position: absolute
+				z-index: 5
+				line-height: 25px
+				width: 115px
+				border-radius: 5px
+				border: 1px solid var(--text-color)
+				opacity: 0
+				visibility: hidden
+				left: 0
+				top: -20px
+				&__option-todo, &__option-inProgress, &__option-done
+					padding: 5px
+					user-select: none
+					cursor: pointer
+					transition: background .3s
+					&:hover
+						background: $main-color
+					&:not(:last-child)
+						border-bottom: 1px solid var(--text-color)
+				&__option-todo
+					border-radius: 5px 5px 0 0
+				&__option-done
+					border-radius: 0 0 5px 5px
+		&__priority
+			cursor: pointer
+			user-select: none
+			position: relative
+			&__dropdown
+				background: var(--bg-color)
+				position: absolute
+				z-index: 5
+				line-height: 25px
+				width: 115px
+				border-radius: 5px
+				border: 1px solid var(--text-color)
+				opacity: 0
+				visibility: hidden
+				left: 0
+				top: -20px
+				&__option-low, &__option-normal, &__option-high
+					padding: 5px
+					user-select: none
+					cursor: pointer
+					transition: background .3s
+					&:hover
+						background: $main-color
+					&:not(:last-child)
+						border-bottom: 1px solid var(--text-color)
+				&__option-low
+					border-radius: 5px 5px 0 0
+				&__option-high
+					border-radius: 0 0 5px 5px
 		&__icons
 			display: flex
 			align-items: center
@@ -215,7 +269,7 @@
 		left: 10px
 		border: 2px solid #a600ff
 
-.inProgress
+.inprogress
 	position: relative
 	&::after
 		content: ""

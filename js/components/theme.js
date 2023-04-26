@@ -1,13 +1,8 @@
 function theme() {
-	//The theme switch
 	const themeSwitch = document.querySelector(".switch");
-	//The switch indicator
 	const ball = document.querySelector(".switch__ball");
-	//The root elememnt of the document
 	const rootElem = document.documentElement;
-	//This variables stores the value of the current theme
 	let dataTheme;
-	//This variables stores the value of the new theme
 	let newTheme;
 	//If localStorage already has a theme stored, sets this theme for the website and sets the switch indicator to the appropriate position
 	if (localStorage.getItem("newTheme") === "dark") {
@@ -29,7 +24,7 @@ function theme() {
 		//Changes the theme of the website to the new theme
 		rootElem.setAttribute("data-theme", newTheme);
 	}
-	//Assigns an event listener to the switch
+
 	themeSwitch.addEventListener("click", () => {
 		if (ball.classList.contains("switch__ball-firstRender")) {
 			ball.classList.remove("switch__ball-firstRender");

@@ -4,12 +4,12 @@
         position: absolute
         visibility: hidden
         opacity: 0
-        background: $main-color
+        background: green
         padding: 20px
         border-radius: 5px
         &__one
-            top: 60px
-            left: 450px
+            top: -140px
+            left: 400px
             &::after
                 content: ""
                 position: absolute
@@ -17,7 +17,7 @@
                 left: 25%
                 border: 25px solid transparent
                 border-bottom: none
-                border-top-color: $main-color
+                border-top-color: green
             &::before
                 content: ""
                 position: absolute
@@ -25,10 +25,12 @@
                 left: 80%
                 border: 25px solid transparent
                 border-bottom: none
-                border-top-color: $main-color
+                border-top-color: green
         &__two
-            top: 190px
-            left: 655px
+            top: -50px
+            left: 645px
+            width: 642px
+            z-index: 5
             &::after
                 content: ""
                 position: absolute
@@ -36,7 +38,7 @@
                 left: 49%
                 border: 25px solid transparent
                 border-bottom: none
-                border-top-color: $main-color
+                border-top-color: green
             &::before
                 content: ""
                 position: absolute
@@ -44,10 +46,11 @@
                 left: 73%
                 border: 25px solid transparent
                 border-bottom: none
-                border-top-color: $main-color
+                border-top-color: green
         &__three
-            top: 425px
-            left: 530px
+            top: 40px
+            left: 525px
+            z-index: 5
             &::after
                 content: ""
                 position: absolute
@@ -55,10 +58,11 @@
                 left: 100%
                 border: 25px solid transparent
                 border-right: none
-                border-left-color: $main-color
+                border-left-color: green
         &__four
-            top: 375px
-            left: 653px
+            top: 85px
+            left: 645px
+            z-index: 5
             &::after
                 content: ""
                 position: absolute
@@ -66,7 +70,7 @@
                 left: 25%
                 border: 25px solid transparent
                 border-top: none
-                border-bottom-color: $main-color
+                border-bottom-color: green
             &::before
                 content: ""
                 position: absolute
@@ -74,10 +78,11 @@
                 left: 59%
                 border: 25px solid transparent
                 border-top: none
-                border-bottom-color: $main-color
+                border-bottom-color: green
         &__five
-            top: 375px
-            left: 885px
+            top: 85px
+            left: 875px
+            z-index: 5
             &::after
                 content: ""
                 position: absolute
@@ -85,7 +90,7 @@
                 left: 23%
                 border: 25px solid transparent
                 border-top: none
-                border-bottom-color: $main-color
+                border-bottom-color: green
             &::before
                 content: ""
                 position: absolute
@@ -93,10 +98,10 @@
                 left: 59%
                 border: 25px solid transparent
                 border-top: none
-                border-bottom-color: $main-color
+                border-bottom-color: green
         &__six
             top: 85px
-            left: 1043px
+            left: 1027px
             &::after
                 content: ""
                 position: absolute
@@ -104,14 +109,14 @@
                 left: 80%
                 border: 25px solid transparent
                 border-top: none
-                border-bottom-color: $main-color
+                border-bottom-color: green
     &__text
         font-size: 18px
     &__nav
         display: flex
         justify-content: space-between
     &__button
-        background: #008c00
+        background: $main-color
         width: 50px
         text-align: center
         padding: 5px
@@ -125,5 +130,8 @@
     opacity: 1
     transition: opacity .4s
 
-#float
-    float: right
+.skip
+    margin-right: 10px
+
+#right
+    justify-content: right

@@ -1,19 +1,16 @@
 .creation
 	color: var(--text-color)
 	background: var(--bg-color)
-	padding: 20px 0
+	padding: 10px 0
+	position: relative
 	&__container
 		width: 1140px
 		margin: 0 auto
 	&__form
 		&__desc
 			width: 650px
-			// width: 550px
 			height: 50px
 			padding: 0 10px
-			// &__option
-			// 	display: flex
-			// 	align-items: center
 		&__label
 			margin: 0 10px 0 0
 		&__priority, &__date
@@ -36,11 +33,18 @@
 		justify-content: space-between
 	&__warning
 		color: red
-		display: none
-		position: absolute
+		opacity: 0
+		visibility: hidden
+		text-align: center
+	&__search
+		padding-top: 15px
+		&__input
+			margin: 0 auto
+			display: block
+			height: 50px
+			border-radius: 5px
+			width: 450px
+			padding: 0 10px
 
 .alert
 	border: 2px solid red
-
-.active
-	display: block

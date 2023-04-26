@@ -1,93 +1,85 @@
 import renderTask from "./renderTask.js";
 
 function filterTasks() {
-	//The "filter by status" button
 	const dropdownStatus = document.querySelector(".render__header__filter-status");
-	//The "filter by status" menu
 	const statusMenu = document.querySelector(".render__header__status__dropdown");
-	//All "filter by status" options
 	const statusOptions = document.querySelectorAll(".render__header__status__dropdown__option");
-	//All "filter by status" SVG paths
 	const statusPaths = document.querySelectorAll(".render__header__filter-status-path");
-	//The "filter by priority" button
 	const dropdownPriority = document.querySelector(".render__header__filter-priority");
-	//The "filter by priority" menu
 	const priorityMenu = document.querySelector(".render__header__priority__dropdown");
-	//All "filter by priority" options
 	const priorityOptions = document.querySelectorAll(".render__header__priority__dropdown__option");
-	//All "filter by priority" SVG paths
 	const priorityPaths = document.querySelectorAll(".render__header__filter-priority-path");
-	//Stores array to be filtered
-	let arrToFilter;
-	//Stores unfiltered array
-	let originalArr;
 	//Since filtering by status and priority is very similar, I decided to make one function for both and pass different arguments depending on what is being filtered
-	function filter(item, arr, objectKey, option1, option2, option3) {
-		//Grabs the array from localStorage
-		arrToFilter = JSON.parse(localStorage.getItem("tasks"));
-		//Makes a backup of the array
-		originalArr = [...arrToFilter];
-		//Tracks which option is clicked
+	function filter({item, arr, objectKey, option1, option2, option3}) {
+		const originalArr = JSON.parse(localStorage.getItem("tasks"));
+		let arrFiltered;
+
 		const i = [...arr].indexOf(item);
-		//Depending on which option is pressed the array is filtered
+		//Depending on which option is pressed in the dropdown menu, the array is filtered and rendered
 		switch (i) {
+			//Option "All" for both status and priority
 			case 0:
-				//If "All" is pressed - the original, unfiltered array is set to localStorage
-				localStorage.setItem("tasks", JSON.stringify(originalArr));
 				//The original array is rendered
-				renderTask();
+				document.querySelectorAll(".render__item").forEach((a) => a.remove());
+				renderTask(originalArr);
 				break;
+			//Option "Todo" for status, "Low" for priority
 			case 1:
-				//If option1 is pressed - the array filtered by that option
-				arrToFilter = arrToFilter.filter((a) => a[objectKey] === option1);
-				//The filtered array is set to localStorage
-				localStorage.setItem("tasks", JSON.stringify(arrToFilter));
-				//The filtered array is rerendered
-				renderTask();
-				//The original array is set to localStorage so it can be filtered again
-				localStorage.setItem("tasks", JSON.stringify(originalArr));
+				arrFiltered = originalArr.filter((a) => a[objectKey] === option1);
+				//The filtered array is rendered
+				document.querySelectorAll(".render__item").forEach((a) => a.remove());
+				renderTask(arrFiltered);
 				break;
+			//Option "In progress" for status, "Normal" for priority
 			case 2:
-				//If option2 is pressed - the array filtered by that option
-				arrToFilter = arrToFilter.filter((a) => a[objectKey] === option2);
-				//The filtered array is set to localStorage
-				localStorage.setItem("tasks", JSON.stringify(arrToFilter));
-				//The filtered array is rerendered
-				renderTask();
-				//The original array is set to localStorage so it can be filtered again
-				localStorage.setItem("tasks", JSON.stringify(originalArr));
+				arrFiltered = originalArr.filter((a) => a[objectKey] === option2);
+				//The filtered array is rendered
+				document.querySelectorAll(".render__item").forEach((a) => a.remove());
+				renderTask(arrFiltered);
 				break;
+			//Option "Done" for status, "High" for priority
 			case 3:
-				//If option3 is pressed - the array filtered by that option
-				arrToFilter = arrToFilter.filter((a) => a[objectKey] === option3);
-				//The filtered array is set to localStorage
-				localStorage.setItem("tasks", JSON.stringify(arrToFilter));
-				//The filtered array is rerendered
-				renderTask();
-				//The original array is set to localStorage so it can be filtered again
-				localStorage.setItem("tasks", JSON.stringify(originalArr));
+				arrFiltered = originalArr.filter((a) => a[objectKey] === option3);
+				//The filtered array is rendered
+				document.querySelectorAll(".render__item").forEach((a) => a.remove());
+				renderTask(arrFiltered);
 				break;
 			default:
 				break;
 		}
 	}
-	//Assigns an event listener to the "filter by status" button
+
 	statusOptions.forEach((a) => {
+		const argumentsObject = {
+			item: a,
+			arr: statusOptions,
+			objectKey: "status",
+			option1: "Todo",
+			option2: "In progress",
+			option3: "Done",
+		};
+
 		a.addEventListener("click", () => {
-			filter(a, statusOptions, "status", "Todo", "In progress", "Done");
+			filter(argumentsObject);
 		});
 	});
-	//Assigns an event listener to the "filter by priority" button
+
 	priorityOptions.forEach((a) => {
+		const argumentsObject = {
+			item: a,
+			arr: priorityOptions,
+			objectKey: "priority",
+			option1: "Low",
+			option2: "Normal",
+			option3: "High",
+		};
+
 		a.addEventListener("click", () => {
-			filter(a, priorityOptions, "priority", "Low", "Normal", "High");
+			filter(argumentsObject);
 		});
 	});
-	//Assings an event listener to the document for opening and closing the filter dropdown menus
+
 	document.addEventListener("click", (e) => {
-		//If you press the filter button and the menu is hidden - shows the menu
-		//If you press the filter button and the menu is shown - hides the menu
-		//If the menu is shown and you press anywhere that is not the menu options - hides the menu
 		if (
 			statusMenu.classList.contains("active") &&
 			(e.target === dropdownStatus || ![...statusOptions].includes(e.target))

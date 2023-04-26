@@ -18,37 +18,90 @@
 			<div class="header__help">?</div>
 			
 			<div class="switch">
-			<div>🌜</div>
+			<div>&#127769</div>
 			<div class="switch__ball"></div>
-			<div>🌞</div>
+			<div>&#127774</div>
 		</div>
 		</header>
 
 		<section class="creation">
 			<div class="creation__container">
-					<form class="creation__form">
-						<div>
-							<input type="text" 
-										placeholder="Enter task description" 
-										class="creation__form__desc">
-							<div class="creation__warning" id="warningDesc">Please enter task description</div>
+				<div class="tutorial__message tutorial__message__one">
+					<div class="tutorial__text">Enter a task description, choose a deadline if necessary, and click "Create task" to add it to the list below.</div>
+					<div class="tutorial__nav" id="right">
+						<div class="tutorial__nav">
+							<div class="tutorial__button skip">Skip</div>
+							<div class="tutorial__button next">Next</div>
 						</div>
+					</div>
+				</div>
+				<form class="creation__form">
+					<div>
+						<input type="text" 
+								placeholder="Enter task description" 
+								class="creation__form__desc">
+						<div class="creation__warning" id="warningDesc">Please enter task description</div>
+					</div>
 
-						<div>
-							<div class="creation__form__option">
-									<label for="deadline" class="creation__form__label">Choose task deadline</label>
-									<input name="deadline" 
-											type="date" 
-											class="creation__form__date">
-							</div>
-							<div class="creation__warning" id="warningDeadline">Please enter task deadline</div>
+					<div>
+						<div class="creation__form__option">
+								<label for="deadline" class="creation__form__label">Choose task deadline</label>
+								<input name="deadline" 
+										type="date" 
+										class="creation__form__date">
 						</div>
-						<button type="submit" class="creation__form__create">Create task</button>
-					</form>
+						<div class="creation__warning" id="warningDeadline">Deadline cannot be in the past</div>
+					</div>
+					<button type="submit" class="creation__form__create">Create task</button>
+				</form>
+			</div>
+			<div class="creation__search">
+				<input type="text" class="creation__search__input" placeholder="Search tasks">
 			</div>
 		</section>
 
 		<section class="render">
+			<div class="tutorial__message tutorial__message__two">
+				<div class="tutorial__text">Click the task status or priority to change it.</div>
+				<div class="tutorial__nav">
+					<div class="tutorial__button back">Back</div>
+					<div class="tutorial__nav">
+						<div class="tutorial__button skip">Skip</div>
+						<div class="tutorial__button next">Next</div>
+					</div>
+				</div>
+			</div>
+			<div class="tutorial__message tutorial__message__three">
+				<div class="tutorial__text">Click these buttons to edit your task info right here in the list, or to delete a task. 
+					<br>Some features are disabled while you are editing or deleting a task.</div>
+				<div class="tutorial__nav">
+					<div class="tutorial__button back">Back</div>
+					<div class="tutorial__nav">
+						<div class="tutorial__button skip">Skip</div>
+						<div class="tutorial__button next">Next</div>
+					</div>
+				</div>
+			</div>
+			<div class="tutorial__message tutorial__message__four">
+				<div class="tutorial__text">Use these buttons to sort your tasks by their deadline or priority in ascending or descending order.</div>
+				<div class="tutorial__nav">
+					<div class="tutorial__button back">Back</div>
+					<div class="tutorial__nav">
+						<div class="tutorial__button skip">Skip</div>
+						<div class="tutorial__button next">Next</div>
+					</div>
+				</div>
+			</div>
+			<div class="tutorial__message tutorial__message__five">
+				<div class="tutorial__text">These buttons let you filter your task by status or priority.</div>
+				<div class="tutorial__nav">
+					<div class="tutorial__button back">Back</div>
+					<div class="tutorial__nav">
+						<div class="tutorial__button skip">Skip</div>
+						<div class="tutorial__button next">Next</div>
+					</div>
+				</div>
+			</div>
 			<div class="render__container">
 				<div class="render__header">
 					<h2 class="render__header__desc">Description</h2>
@@ -95,52 +148,13 @@
 					</div>
 				</div>
 				<div class="render__list">
+					
 				</div>
 			</div>
 		</section>
 
 		<section class="tutorial">
 			<div class="tutorial__container">
-				<div class="tutorial__message tutorial__message__one">
-					<div class="tutorial__text">Enter a task description, choose a deadline, and click "Create task" to add it to the list below.</div>
-					<div class="tutorial__button next" id="float">Next</div>
-				</div>
-
-				<div class="tutorial__message tutorial__message__two">
-					<div class="tutorial__text">Click the task status or priority to change it.
-						<br>A task status loops through "Todo" -> "In progress" -> "Done" -> "Todo" -> "...".
-						<br>A task priority loops through "Low" -> "Normal" -> "High" -> "Low" -> "...".</div>
-					<div class="tutorial__nav">
-						<div class="tutorial__button back">Back</div>
-						<div class="tutorial__button next">Next</div>
-					</div>
-				</div>
-
-				<div class="tutorial__message tutorial__message__three">
-					<div class="tutorial__text">Click these buttons to edit your task info right here in the list, or to delete a task. 
-						<br>Some features are disabled while you are editing or deleting a task.</div>
-					<div class="tutorial__nav">
-						<div class="tutorial__button back">Back</div>
-						<div class="tutorial__button next">Next</div>
-					</div>
-				</div>
-
-				<div class="tutorial__message tutorial__message__four">
-					<div class="tutorial__text">Use these buttons to sort your tasks by their deadline or priority in ascending or descending order.</div>
-					<div class="tutorial__nav">
-						<div class="tutorial__button back">Back</div>
-						<div class="tutorial__button next">Next</div>
-					</div>
-				</div>
-
-				<div class="tutorial__message tutorial__message__five">
-					<div class="tutorial__text">These buttons let you filter your task by status or priority.</div>
-					<div class="tutorial__nav">
-						<div class="tutorial__button back">Back</div>
-						<div class="tutorial__button next">Next</div>
-					</div>
-				</div>
-
 				<div class="tutorial__message tutorial__message__six">
 					<div class="tutorial__text">Click here if you ever want to see this tutorial again.</div>
 					<div class="tutorial__nav">
