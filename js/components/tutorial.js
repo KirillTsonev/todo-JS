@@ -14,6 +14,7 @@ function tutorial() {
 
 		if (i === 5) {
 			messages[i].classList.remove("active");
+
 			localStorage.setItem("tutorial", "done");
 		} else {
 			messages[i].classList.remove("active");
@@ -42,15 +43,18 @@ function tutorial() {
 
 	help.addEventListener("click", () => {
 		localStorage.removeItem("tutorial");
+
 		messages.forEach((a) => {
 			a.classList.remove("active");
 		});
+
 		messages[0].classList.toggle("active");
 	});
 
 	skips.forEach((a) => {
 		a.addEventListener("click", () => {
 			localStorage.setItem("tutorial", "done");
+
 			messages.forEach((a) => {
 				a.classList.remove("active");
 			});

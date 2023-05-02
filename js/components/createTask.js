@@ -11,6 +11,7 @@ function createTask() {
 
 	descInput.addEventListener("input", (e) => {
 		desc = e.target.value;
+
 		descInput.classList.remove("alert");
 		warningDesc.classList.remove("active");
 	});
@@ -24,6 +25,7 @@ function createTask() {
 		} else {
 			deadlineInput.classList.remove("alert");
 			warningDeadline.classList.remove("active");
+
 			deadline = deadlineInput.valueAsDate;
 		}
 	});

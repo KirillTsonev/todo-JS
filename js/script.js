@@ -10,8 +10,8 @@ window.addEventListener("DOMContentLoaded", function () {
 	theme();
 	createTask();
 	renderTask();
-	sortTasks();
-	filterTasks();
 	tutorial();
 	searchFilter();
+	sortTasks();
+	filterTasks();
 });

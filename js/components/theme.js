@@ -7,10 +7,13 @@ function theme() {
 	//If localStorage already has a theme stored, sets this theme for the website and sets the switch indicator to the appropriate position
 	if (localStorage.getItem("newTheme") === "dark") {
 		ball.classList.add("switch__ball-firstRender");
+
 		newTheme = "dark";
+
 		rootElem.setAttribute("data-theme", newTheme);
 	} else {
 		newTheme = "light";
+
 		rootElem.setAttribute("data-theme", newTheme);
 	}
 
@@ -30,7 +33,9 @@ function theme() {
 			ball.classList.remove("switch__ball-firstRender");
 			ball.classList.add("switch__ball-right");
 		}
+
 		ball.classList.toggle("switch__ball-right");
+
 		toggleTheme();
 	});
 }

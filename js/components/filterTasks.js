@@ -9,75 +9,72 @@ function filterTasks() {
 	const priorityMenu = document.querySelector(".render__header__priority__dropdown");
 	const priorityOptions = document.querySelectorAll(".render__header__priority__dropdown__option");
 	const priorityPaths = document.querySelectorAll(".render__header__filter-priority-path");
-	//Since filtering by status and priority is very similar, I decided to make one function for both and pass different arguments depending on what is being filtered
-	function filter({item, arr, objectKey, option1, option2, option3}) {
+	const allStatus = document.querySelector(".allStatus");
+	const todoStatus = document.querySelector(".todoStatus");
+	const inProgressStatus = document.querySelector(".inProgressStatus");
+	const doneStatus = document.querySelector(".doneStatus");
+	const allPriority = document.querySelector(".allPriority");
+	const lowPriority = document.querySelector(".lowPriority");
+	const normalPriority = document.querySelector(".normalPriority");
+	const highPriority = document.querySelector(".highPriority");
+
+	if (localStorage.getItem("sortStatus")) {
+		filterStatus(localStorage.getItem("sortStatus"));
+	}
+
+	if (localStorage.getItem("sortPriority")) {
+		filterPriority(localStorage.getItem("sortPriority"));
+	}
+
+	function filterStatus(option) {
 		const originalArr = JSON.parse(localStorage.getItem("tasks"));
 		let arrFiltered;
 
-		const i = [...arr].indexOf(item);
-		//Depending on which option is pressed in the dropdown menu, the array is filtered and rendered
-		switch (i) {
-			//Option "All" for both status and priority
-			case 0:
-				//The original array is rendered
-				document.querySelectorAll(".render__item").forEach((a) => a.remove());
-				renderTask(originalArr);
-				break;
-			//Option "Todo" for status, "Low" for priority
-			case 1:
-				arrFiltered = originalArr.filter((a) => a[objectKey] === option1);
-				//The filtered array is rendered
-				document.querySelectorAll(".render__item").forEach((a) => a.remove());
-				renderTask(arrFiltered);
-				break;
-			//Option "In progress" for status, "Normal" for priority
-			case 2:
-				arrFiltered = originalArr.filter((a) => a[objectKey] === option2);
-				//The filtered array is rendered
-				document.querySelectorAll(".render__item").forEach((a) => a.remove());
-				renderTask(arrFiltered);
-				break;
-			//Option "Done" for status, "High" for priority
-			case 3:
-				arrFiltered = originalArr.filter((a) => a[objectKey] === option3);
-				//The filtered array is rendered
-				document.querySelectorAll(".render__item").forEach((a) => a.remove());
-				renderTask(arrFiltered);
-				break;
-			default:
-				break;
+		localStorage.setItem("sortStatus", option);
+		localStorage.removeItem("sortPriority");
+
+		document.querySelectorAll(".render__item").forEach((a) => a.remove());
+
+		if (option === "All") {
+			renderTask(originalArr);
+		} else {
+			arrFiltered = originalArr.filter((a) => a.status === option);
+			renderTask(arrFiltered);
 		}
 	}
 
-	statusOptions.forEach((a) => {
-		const argumentsObject = {
-			item: a,
-			arr: statusOptions,
-			objectKey: "status",
-			option1: "Todo",
-			option2: "In progress",
-			option3: "Done",
-		};
+	function filterPriority(option) {
+		const originalArr = JSON.parse(localStorage.getItem("tasks"));
+		let arrFiltered;
 
-		a.addEventListener("click", () => {
-			filter(argumentsObject);
+		localStorage.setItem("sortPriority", option);
+		localStorage.removeItem("sortStatus");
+
+		document.querySelectorAll(".render__item").forEach((a) => a.remove());
+
+		if (option === "All") {
+			renderTask(originalArr);
+		} else {
+			arrFiltered = originalArr.filter((a) => a.priority === option);
+			renderTask(arrFiltered);
+		}
+	}
+
+	function addEventListenersFilter(element, fn, arg) {
+		element.addEventListener("click", () => {
+			fn(arg);
 		});
-	});
+	}
 
-	priorityOptions.forEach((a) => {
-		const argumentsObject = {
-			item: a,
-			arr: priorityOptions,
-			objectKey: "priority",
-			option1: "Low",
-			option2: "Normal",
-			option3: "High",
-		};
+	addEventListenersFilter(allStatus, filterStatus, "All");
+	addEventListenersFilter(todoStatus, filterStatus, "Todo");
+	addEventListenersFilter(inProgressStatus, filterStatus, "In progress");
+	addEventListenersFilter(doneStatus, filterStatus, "Done");
 
-		a.addEventListener("click", () => {
-			filter(argumentsObject);
-		});
-	});
+	addEventListenersFilter(allPriority, filterPriority, "All");
+	addEventListenersFilter(lowPriority, filterPriority, "Low");
+	addEventListenersFilter(normalPriority, filterPriority, "Normal");
+	addEventListenersFilter(highPriority, filterPriority, "High");
 
 	document.addEventListener("click", (e) => {
 		if (

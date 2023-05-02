@@ -4,7 +4,7 @@ import editTask from "./editTask.js";
 import deleteTask from "./deleteTask.js";
 
 function renderTask(arr) {
-	//This could be done with the insertAdjacentHTML() method as a safe and more performative alternative to innerHTML, but in my research I found that methods, which
+	//This could be done with the insertAdjacentHTML() method as a safe and more performant alternative to innerHTML, but in my research I found that methods, which
 	//work with DOM nodes rather than parsing strings are even faster
 	function renderEachTask(obj) {
 		const parent = document.createElement("div");
@@ -12,16 +12,20 @@ function renderTask(arr) {
 
 		const descContainer = document.createElement("div");
 		const taskDesc = document.createElement("div");
+
 		taskDesc.classList.add("render__item__desc", "active");
 		taskDesc.textContent = `${obj.desc}`;
+
 		const editDesc = document.createElement("input");
 		editDesc.classList.add("render__item__text");
 		descContainer.append(taskDesc, editDesc);
 
 		const deadlineContainer = document.createElement("div");
+
 		const taskDeadline = document.createElement("div");
 		taskDeadline.classList.add("render__item__deadline", "active");
 		taskDeadline.textContent = obj.deadline ? `${obj.deadline}`.slice(0, 10) : "No date";
+
 		const editDeadline = document.createElement("input");
 		editDeadline.setAttribute("type", "date");
 		editDeadline.classList.add("render__item__date");
@@ -33,17 +37,19 @@ function renderTask(arr) {
 
 		const statusDropdown = document.createElement("div");
 		statusDropdown.classList.add("render__item__status__dropdown");
+
 		const optionTodo = document.createElement("div");
 		optionTodo.classList.add("render__item__status__dropdown__option-todo");
 		optionTodo.textContent = "Todo";
+
 		const optionInProgress = document.createElement("div");
 		optionInProgress.classList.add("render__item__status__dropdown__option-inProgress");
 		optionInProgress.textContent = "In progress";
+
 		const optionDone = document.createElement("div");
 		optionDone.classList.add("render__item__status__dropdown__option-done");
 		optionDone.textContent = "Done";
 		statusDropdown.append(optionTodo, optionInProgress, optionDone);
-
 		status.append(statusDropdown);
 
 		const priority = document.createElement("div");
@@ -52,17 +58,19 @@ function renderTask(arr) {
 
 		const priorityDropdown = document.createElement("div");
 		priorityDropdown.classList.add("render__item__priority__dropdown");
+
 		const optionLow = document.createElement("div");
 		optionLow.classList.add("render__item__priority__dropdown__option-low");
 		optionLow.textContent = "Low";
+
 		const optionNormal = document.createElement("div");
 		optionNormal.classList.add("render__item__priority__dropdown__option-normal");
 		optionNormal.textContent = "Normal";
+
 		const optionHigh = document.createElement("div");
 		optionHigh.classList.add("render__item__priority__dropdown__option-high");
 		optionHigh.textContent = "High";
 		priorityDropdown.append(optionLow, optionNormal, optionHigh);
-
 		priority.append(priorityDropdown);
 
 		const iconContainer = document.createElement("div");
@@ -71,6 +79,7 @@ function renderTask(arr) {
 		const editContainer = document.createElement("div");
 
 		const pencilSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+
 		const pencilPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
 		pencilSvg.classList.add("render__item__icons__pencil", "active");
 		pencilSvg.setAttribute("viewBox", "0 0 512 512");
@@ -92,16 +101,19 @@ function renderTask(arr) {
 		editCancel.classList.add("render__item__icons__cancel-edit");
 		editCancel.setAttribute("src", "./icons/x.png");
 		editCancel.setAttribute("alt", "Cancel");
-
 		editYesNoContainer.append(editConfirm, editCancel);
 		editContainer.append(pencilSvg, editYesNoContainer);
 
 		const deleteContainer = document.createElement("div");
 
 		const trashSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+
 		const trashPath1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
 		const trashPath2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
 		const trashPath3 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
 		const trashPath4 = document.createElementNS("http://www.w3.org/2000/svg", "path");
 		trashSvg.classList.add("render__item__icons__trash", "active");
 		trashSvg.setAttribute("viewBox", "0 0 612 612");
@@ -135,10 +147,8 @@ function renderTask(arr) {
 		deleteCancel.classList.add("render__item__icons__cancel-delete");
 		deleteCancel.setAttribute("src", "./icons/x.png");
 		deleteCancel.setAttribute("alt", "Cancel");
-
 		deleteYesNoContainer.append(deleteConfirm, deleteCancel);
 		deleteContainer.append(trashSvg, deleteYesNoContainer);
-
 		iconContainer.append(editContainer, deleteContainer);
 
 		parent.append(descContainer, deadlineContainer, status, priority, iconContainer);
@@ -171,7 +181,9 @@ function renderTask(arr) {
 				])
 		  )
 		: null;
+
 	let arrToRender;
+
 	arr ? (arrToRender = arr) : (arrToRender = JSON.parse(localStorage.getItem("tasks")));
 	//Renders all tasks from the array
 	arrToRender.forEach((a) => renderEachTask(a));
